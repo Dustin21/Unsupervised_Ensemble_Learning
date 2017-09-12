@@ -40,9 +40,9 @@ kmeans = Bootstrap.kmeans_bootstrap(bts, DO_K_SWEEP, BOOTSTRAP_N, DATA_START_IND
 # max k determined above becomes optimal k
 gmm = RunAlgos(3, BOOTSTRAP_N, DATA_START_INDEX, bts, kmeans).run_GMM()
 agglomerative = RunAlgos(3, BOOTSTRAP_N, DATA_START_INDEX, bts, kmeans).run_Agglomerative()
-
+kmeans_ = RunAlgos(3, BOOTSTRAP_N, DATA_START_INDEX, bts, kmeans).run_KMeans()
 # consensus clustering
-cc_init = Consensus(kmeans, gmm, agglomerative, bts, df, DATA_START_INDEX, 3, labels)
+cc_init = Consensus(kmeans_, gmm, agglomerative, bts, df, DATA_START_INDEX, 3, labels)
 mats = cc_init.combine_results()
 
 # write consensus results to file

@@ -41,6 +41,7 @@ class Consensus:
 			indices = self.bts[i].values[:, 0]
 			temp = []
 			for j in range(len(K_means_bts)):
+
 				temp.append(
 					pd.DataFrame(indices).join(pd.DataFrame(K_means_bts[j][i]), lsuffix='name', rsuffix='class', how='inner'))
 
@@ -137,10 +138,12 @@ class Consensus:
 
 	@staticmethod
 	def append_all(alg_out1, alg_out2, alg_out3):
-		alg_out1.append(alg_out2)
-		alg_out1.append(alg_out3)
-		pickle.dump(alg_out1, open("bts.p", "wb"))
-		return alg_out1
+		foo = []
+		foo.append(alg_out1)
+		foo.append(alg_out2)
+		foo.append(alg_out3)
+		pickle.dump(foo, open("bts.p", "wb"))
+		return foo
 
 
 

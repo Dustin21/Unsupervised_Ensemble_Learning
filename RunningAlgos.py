@@ -12,6 +12,28 @@ class RunAlgos:
 		self.bts = bts
 		self.k_means_bts = k_means_bts
 
+	def run_KMeans(self):
+		# start = MAX_K
+		print("running KMeans")
+		# KMeans clustering
+		K_means = []
+		K_means_bts = []
+
+		for i in range(self.k_opt-2, self.k_opt - 1):
+
+			temp = []
+			temp2 = []
+			for j in range(self.bootsrap_n):
+				temp.append(KMeans(n_clusters=i + 2, init='k-means++', n_jobs=1, n_init=10, max_iter=400))
+				temp2.append(temp[j].fit_predict(self.bts[j].values[:, self.start_index:]))
+				print("K = " + str(i + 2) + " N = " + str(j))
+
+			K_means.append(temp)
+			K_means_bts.append(temp2)
+
+			pickle.dump(K_means, open("KMeans.p", "wb"))
+			return temp2
+
 	def run_GMM(self):
 		# start = MAX_K
 		print("running GMM")

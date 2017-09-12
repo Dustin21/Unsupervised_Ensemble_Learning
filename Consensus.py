@@ -3,6 +3,7 @@ import pandas as pd
 from collections import Counter
 import matplotlib.pyplot as plt
 from HungarianAlgo import *
+import seaborn as sns
 
 class Consensus:
 
@@ -117,15 +118,22 @@ class Consensus:
 		titles = ['KMeans', 'GMM Clustering', 'Ward Agglomerative']
 
 		for i in range(len(titles)):
-			plt.figure()
+			sns_plt = sns.clustermap(np.asarray(mats[i][0:]).transpose(), cmap="mako", robust=True)
+			sns_plt.savefig(titles[i])
+			sns_plt
 			plt.title(titles[i])
-			plt.xlabel('First 20 samples in numeric order')
-			plt.ylabel('Class label')
-			plt.yticks([0, 1, 2])
-			plt.imshow(np.asarray(mats[i][0:50]).transpose(), interpolation='nearest', cmap=plt.cm.ocean)
-			plt.colorbar()
-			plt.axes().set_aspect('auto')
-		plt.show()
+			plt.show()
+
+		# for i in range(len(titles)):
+		# 	plt.figure()
+		# 	plt.title(titles[i])
+		# 	plt.xlabel('First 20 samples in numeric order')
+		# 	plt.ylabel('Class label')
+		# 	plt.yticks([0, 1, 2])
+		# 	plt.imshow(np.asarray(mats[i][0:50]).transpose(), interpolation='nearest', cmap=plt.cm.ocean)
+		# 	plt.colorbar()
+		# 	plt.axes().set_aspect('auto')
+		# plt.show()
 
 	@staticmethod
 	def append_all(alg_out1, alg_out2, alg_out3):

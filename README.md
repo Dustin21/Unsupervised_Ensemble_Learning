@@ -3,6 +3,8 @@ Copyright AQM 2017
 
 Authors: Haihan Lan, Dustin Johnson
 
+Repo: https://github.com/Dustin21/Unsupervised_Ensemble_Learning
+
 You are free to use, modify, distribute this code AS LONG AS YOU RETAIN THIS HEADER
 
 # Dependencies
